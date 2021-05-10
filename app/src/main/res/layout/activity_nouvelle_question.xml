@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/tvNouvelleQuestion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="Nouvelle question"
+        android:textAlignment="center"
+        android:textSize="26dp"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textFieldQuestion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvNouvelleQuestion"
+        android:layout_marginTop="32dp"
+        android:hint="Question">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/champQuestion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textFieldReponse"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textFieldQuestion"
+        android:layout_marginTop="16dp"
+        android:hint="Reponse">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/champReponse"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lines="3"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btnsupprimer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Supprimer"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        app:layout_constraintTop_toBottomOf="@+id/textFieldReponse"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:visibility="invisible"
+        />
+
+    <Button
+        android:id="@+id/btnValiderNouvelleQuestion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="Valider"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
