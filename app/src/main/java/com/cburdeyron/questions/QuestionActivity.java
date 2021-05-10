@@ -19,6 +19,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -51,6 +52,14 @@ public class QuestionActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        // btnsupprimer = findViewById(R.id.btnsupprimer);
+        // btnsupprimer.setOnClickListener(new View.OnClickListener() {
+            // @Override
+            // public void onClick(View v) {
+                // SupprimerQuestion();
+            // }
+        // });
 
         RecupererQuestions();
 
@@ -105,13 +114,31 @@ public class QuestionActivity extends AppCompatActivity {
                 });
     }
 
+    public void modifier(Map<String, Object> question) {
+        db.collection("taches")
+                .document("")
+                .set(question)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(QuestionActivity.this, "Question modifiée !", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(QuestionActivity.this, "Error getting documents", Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+
     private void SupprimerQuestion( QueryDocumentSnapshot document ){
         db.collection("questions").document(document.getId())
                 .delete()
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        Toast.makeText(QuestionActivity.this, "Question supprimé !", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(QuestionActivity.this, "Question supprimée !", Toast.LENGTH_SHORT).show();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
